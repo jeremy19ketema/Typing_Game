@@ -617,3 +617,66 @@ body {
     align-items: center;
     gap: 10px;
 }
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.feature-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.feature-item i {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.improvement-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tip-card {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.tip-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .instructions-grid,
+    .difficulty-levels,
+    .features-list,
+    .improvement-tips {
+        grid-template-columns: 1fr;
+    }
+    
+    .scoring-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem;
+    }
+}
