@@ -60,16 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     if (document.getElementById('results-body')) {
+    console.log('Stats page detected - initializing...');
     loadStatsPage();
     setupStatsControls();
 }
 
 function loadStatsPage() {
+     console.log('loadStatsPage called');
     const results = JSON.parse(localStorage.getItem('typingGameResults') || '[]');
 
     const noResults = document.getElementById('no-results');
     const table = document.getElementById('results-table');
     const tbody = document.getElementById('results-body');
+
+    console.log(`Found ${results.length} game results`);
 
     if (results.length === 0) {
         noResults.style.display = 'block';
@@ -77,10 +81,11 @@ function loadStatsPage() {
         return;
     }
 
-    noResults.style.display = 'none';
-    table.style.display = 'table';
+    if (noResults) noResults.style.display = 'none';
+        if (table) table.style.display = 'table';
 
-    tbody.innerHTML = '';
+      if (tbody) {
+        tbody.innerHTML = '';
 
     results.reverse().forEach(result => {
         const tr = document.createElement('tr');
@@ -97,23 +102,28 @@ function loadStatsPage() {
 
         tbody.appendChild(tr);
     });
+}
 
     updateSummary(results);
 }
 
 function updateSummary(results) {
-    document.getElementById('total-games').textContent = results.length;
-
-    const avgWpm = Math.round(
-        results.reduce((sum, r) => sum + r.wpm, 0) / results.length
-    );
-
-    const avgAccuracy = Math.round(
-        results.reduce((sum, r) => sum + r.accuracy, 0) / results.length
-    );
-
-    const bestWpm = Math.max(...results.map(r => r.wpm));
-
+      console.log('updateSummary called'); 
+        
+        if (results.length === 0) {
+            document.getElementById('total-games').textContent = '0';
+            document.getElementById('avg-wpm').textContent = '0';
+            document.getElementById('avg-accuracy').textContent = '0%';
+            document.getElementById('best-wpm').textContent = '0';
+            return;
+        }
+    const totalGames = results.length;
+        const totalWPM = results.reduce((sum, r) => sum + r.wpm, 0);
+        const totalAccuracy = results.reduce((sum, r) => sum + r.accuracy, 0);
+        const bestWpm = Math.max(...results.map(r => r.wpm));
+        const avgWpm = Math.round(totalWPM / totalGames);
+        const avgAccuracy = Math.round(totalAccuracy / totalGames);
+    document.getElementById('total-games').textContent = totalGames;
     document.getElementById('avg-wpm').textContent = avgWpm;
     document.getElementById('avg-accuracy').textContent = avgAccuracy + '%';
     document.getElementById('best-wpm').textContent = bestWpm;
@@ -123,7 +133,7 @@ function capitalize(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-});
+
 function setupStatsControls() {
     const clearStatsBtn = document.getElementById('clear-stats');
     if (clearStatsBtn) {
@@ -132,6 +142,21 @@ function setupStatsControls() {
                 localStorage.removeItem('typingGameResults');
                 loadStatsPage();
                 alert('All statistics have been cleared successfully!');
+                 const noResults = document.getElementById('no-results');
+        const table = document.getElementById('results-table');
+        const tbody = document.getElementById('results-body');
+        
+        if (noResults) noResults.style.display = 'block';
+        if (table) table.style.display = 'none';
+        if (tbody) tbody.innerHTML = '';
+        const totalGamesEl = document.getElementById('total-games');
+        const avgWpmEl = document.getElementById('avg-wpm');
+        const avgAccuracyEl = document.getElementById('avg-accuracy');
+        const bestWpmEl = document.getElementById('best-wpm');
+        if (totalGamesEl) totalGamesEl.textContent = '0';
+        if (avgWpmEl) avgWpmEl.textContent = '0';
+        if (avgAccuracyEl) avgAccuracyEl.textContent = '0%';
+        if (bestWpmEl) bestWpmEl.textContent = '0';
             }
         });
     }
@@ -160,3 +185,4 @@ function setupStatsControls() {
         });
     }
 }
+});
