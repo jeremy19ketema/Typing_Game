@@ -44,3 +44,44 @@ document.addEventListener('DOMContentLoaded', function() {
     initGame();
     loadThemePreference();
 });
+function initGame() {
+    playerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validatePlayerName()) {
+            playerName = playerNameInput.value.trim();
+            currentDifficulty = difficultySelect.value;
+            setupSection.style.display = 'none';
+            gameArea.style.display = 'block';
+            initGameWords();
+        }
+    });
+    startBtn.addEventListener('click', startGame);
+
+    resetBtn.addEventListener('click', resetGame);
+
+    pauseBtn.addEventListener('click', togglePause);
+
+    hintBtn.addEventListener('click', showHint);
+
+    wordInput.addEventListener('input', checkWord);
+
+    closeModal.addEventListener('click', () => resultsModal.style.display = 'none');
+    playAgainBtn.addEventListener('click', () => {
+        resultsModal.style.display = 'none';
+        resetGame();
+    });
+    viewStatsBtn.addEventListener('click', () => {
+        window.location.href = 'stats.html';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === resultsModal) {
+            resultsModal.style.display = 'none';
+        }
+    });
+
+    themeToggle.addEventListener('click', toggleTheme);
+
+mobileMenuBtn.addEventListener('click', function() {
+    navList.classList.toggle('active');
+});
