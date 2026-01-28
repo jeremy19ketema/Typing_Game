@@ -349,3 +349,49 @@ function validatePlayerName() {
     nameError.textContent = '';
     return true;
 }
+
+function saveGameResult(name, wpm, accuracy, words, time) {
+    const result = {
+        name: name || 'Anonymous',
+        wpm: wpm,
+        accuracy: accuracy,
+        words: words,
+        time: time,
+        date: new Date().toISOString(),
+        difficulty: currentDifficulty
+    };
+    
+    const results = JSON.parse(localStorage.getItem('typingGameResults') || '[]');
+    
+    results.push(result);
+    
+    if (results.length > 20) {
+        results.splice(0, results.length - 20);
+    }
+    
+    localStorage.setItem('typingGameResults', JSON.stringify(results));
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    
+    const icon = themeToggle.querySelector('i');
+    if (document.body.classList.contains('dark-theme')) {
+        icon.className = 'fas fa-sun';
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        icon.className = 'fas fa-moon';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+        localStorage.setItem('theme', 'light');
+    }
+}
+
+function loadThemePreference() {
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
+}
