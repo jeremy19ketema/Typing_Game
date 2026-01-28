@@ -731,4 +731,42 @@ body {
             color: white;
             font-weight: 600;
         }
+         .results-table tr:hover {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }
         
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-easy {
+            background-color: rgba(76, 201, 240, 0.2);
+            color: var(--success-color);
+        }
+        
+        .badge-medium {
+            background-color: rgba(67, 97, 238, 0.2);
+            color: var(--primary-color);
+        }
+        
+        .badge-hard {
+            background-color: rgba(247, 37, 133, 0.2);
+            color: var(--warning-color);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-color);
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--border-color);
+        }
