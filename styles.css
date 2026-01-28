@@ -770,3 +770,29 @@ body {
             margin-bottom: 1rem;
             color: var(--border-color);
         }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .chart-container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .results-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
