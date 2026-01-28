@@ -49,3 +49,32 @@
                     </div>
                 </div>
             </section>
+            <section class="player-setup" id="setup-section">
+                <h2>Enter Your Name</h2>
+                <form id="player-form">
+                    <div class="form-group">
+                        <label for="player-name">Player Name:</label>
+                        <input type="text" id="player-name" placeholder="Enter your name" required minlength="2" maxlength="20">
+                        <small class="error-msg" id="name-error"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy (Common Words)</option>
+                            <option value="medium" selected>Medium (Mixed Words)</option>
+                            <option value="hard">Hard (Long Words)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Start Game</button>
+                </form>
+            </section>
+            <section class="game-area" id="game-area" style="display: none;">
+                <div class="word-display">
+                    <p id="current-word">Click Start to begin!</p>
+                </div>
+                
+                <div class="input-area">
+                    <input type="text" id="word-input" placeholder="Type the word here..." autocomplete="off" disabled>
+                    <button id="start-btn" class="btn btn-success">Start Game</button>
+                    <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                </div>
