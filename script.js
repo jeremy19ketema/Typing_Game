@@ -179,3 +179,58 @@ function updateTimer() {
         endGame();
     }
 }
+function checkWord() {
+    if (!gameActive || gamePaused) return;
+    
+    const typedWord = wordInput.value.trim();
+    const currentWord = currentWordEl.textContent;
+    
+    if (typedWord === currentWord) {
+        handleCorrectWord();
+    } else if (typedWord.length >= currentWord.length) {
+        handleIncorrectWord();
+    }
+}
+
+function handleCorrectWord() {
+    const wordBoxes = document.querySelectorAll('.word-box');
+    if (wordBoxes[currentWordIndex]) {
+        wordBoxes[currentWordIndex].classList.remove('current');
+        wordBoxes[currentWordIndex].classList.add('correct');
+    }
+    correctWords++;
+    totalTyped++;
+    
+    currentWordIndex++;
+    wordInput.value = '';
+    
+    if (currentWordIndex >= wordContainer.children.length) {
+        endGame();
+        return;
+    }
+    
+    updateWordDisplay();
+    
+    updateGameStats();
+}
+function handleIncorrectWord() {
+    const wordBoxes = document.querySelectorAll('.word-box');
+    if (wordBoxes[currentWordIndex]) {
+        wordBoxes[currentWordIndex].classList.add('incorrect');
+    }
+    
+    totalTyped++;
+
+    wordInput.value = '';
+    
+    currentWordIndex++;
+    
+    if (currentWordIndex >= wordContainer.children.length) {
+        endGame();
+        return;
+    }
+    
+    updateWordDisplay();
+    
+    updateGameStats();
+}
