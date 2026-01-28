@@ -288,3 +288,64 @@ function showHint() {
         }
     }, 1000);
 }
+
+function endGame() {
+    gameActive = false;
+    clearInterval(timerInterval);
+
+    const accuracy = totalTyped > 0 ? Math.round((correctWords / totalTyped) * 100) : 0;
+    const timeUsed = 60 - timeLeft;
+    const wpm = timeUsed > 0 ? Math.round((correctWords / timeUsed) * 60) : 0;
+    
+    resultPlayer.textContent = playerName || 'Anonymous';
+    resultWpm.textContent = wpm;
+    resultAccuracy.textContent = accuracy;
+    resultWords.textContent = correctWords;
+    resultTime.textContent = timeUsed;
+    
+    saveGameResult(playerName, wpm, accuracy, correctWords, timeUsed);
+    
+    resultsModal.style.display = 'flex';
+}
+function resetGame() {
+    gameActive = false;
+    gamePaused = false;
+    clearInterval(timerInterval);
+    
+    timeLeft = 60;
+    timerEl.textContent = timeLeft;
+    accuracyEl.textContent = 100;
+    wpmEl.textContent = 0;
+    
+    wordInput.value = '';
+    wordInput.disabled = true;
+    
+    startBtn.disabled = false;
+    startBtn.textContent = 'Start Game';
+    pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+    
+    initGameWords();
+    currentWordIndex = 0;
+    correctWords = 0;
+    totalTyped = 0;
+    
+    updateWordDisplay();
+    updateGameStats();
+}
+
+function validatePlayerName() {
+    const name = playerNameInput.value.trim();
+    
+    if (name.length < 2) {
+        nameError.textContent = 'Name must be at least 2 characters';
+        return false;
+    }
+    
+    if (name.length > 20) {
+        nameError.textContent = 'Name must be less than 20 characters';
+        return false;
+    }
+    
+    nameError.textContent = '';
+    return true;
+}
