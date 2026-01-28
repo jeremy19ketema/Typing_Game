@@ -85,3 +85,40 @@ function initGame() {
 mobileMenuBtn.addEventListener('click', function() {
     navList.classList.toggle('active');
 });
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        const currentPage = window.location.pathname.split('/').pop();
+        
+        if (href !== currentPage && !href.startsWith('#')) {
+            e.preventDefault();
+            
+            navList.classList.remove('active');
+            
+            const mainContent = document.querySelector('main');
+            if (mainContent) {
+                mainContent.classList.add('fade-out');
+            }
+            
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300);
+        } else {
+            navList.classList.remove('active');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mainContent = document.querySelector('main');
+    if (mainContent) {
+        mainContent.classList.add('fade-in');
+        
+        setTimeout(() => {
+            mainContent.classList.remove('fade-in');
+        }, 500);
+    }
+});
+
+    updateWordDisplay();
+}
