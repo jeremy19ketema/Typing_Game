@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (document.getElementById('results-body')) {
     loadStatsPage();
+    setupStatsControls();
 }
 
 function loadStatsPage() {
@@ -123,3 +124,39 @@ function capitalize(word) {
 }
 
 });
+function setupStatsControls() {
+    const clearStatsBtn = document.getElementById('clear-stats');
+    if (clearStatsBtn) {
+        clearStatsBtn.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete all game statistics? This cannot be undone.')) {
+                localStorage.removeItem('typingGameResults');
+                loadStatsPage();
+                alert('All statistics have been cleared successfully!');
+            }
+        });
+    }
+    const exportStatsBtn = document.getElementById('export-stats');
+    if (exportStatsBtn) {
+        exportStatsBtn.addEventListener('click', function() {
+            const results = JSON.parse(localStorage.getItem('typingGameResults') || '[]');
+            if (results.length === 0) {
+                alert('No game data to export. Play some games first!');
+                return;
+            }
+            const jsonString = JSON.stringify(results, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = 'typing-game-statistics.json';
+        
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            
+            URL.revokeObjectURL(url);
+            
+            alert('Statistics exported successfully! File: typing-game-statistics.json');
+        });
+    }
+}
