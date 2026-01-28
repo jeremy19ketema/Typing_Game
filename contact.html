@@ -93,3 +93,94 @@
                         </div>
                     </div>
                 </section>
+                <section class="contact-form-section">
+                    <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                    
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name *</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required minlength="2" maxlength="50">
+                            <small class="error-msg" id="name-error"></small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-email">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" placeholder="Enter your email address" required>
+                            <small class="error-msg" id="email-error"></small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-subject">Subject</label>
+                            <select id="contact-subject" name="subject">
+                                <option value="">Select a subject</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="bug">Report a Bug</option>
+                                <option value="suggestion">Feature Suggestion</option>
+                                <option value="question">Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" name="message" placeholder="Type your message here..." rows="20" cols="100" required minlength="10" maxlength="1000"></textarea>
+                            <small class="error-msg" id="message-error"></small>
+                            <div class="char-count">
+                                <span id="char-count">0</span> / 1000 characters
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Clear Form
+                            </button>
+                        </div>
+                        
+                        <div class="form-status" id="form-status"></div>
+                    </form>
+                </section>
+            </div>
+            <section class="developer-info">
+                <h2><i class="fas fa-code"></i>My Name Is Ermiyas Ketema</h2>
+                <div class="developer-card">
+                    <div class="developer-content">
+                        <h3>Web Development Final Project</h3>
+                        <p>This Typing Game was created as a final project to demonstrate mastery of core frontend web development concepts using only vanilla technologies:</p>
+                        
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                        </div>
+                   </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Typing Game | Coded By Ermiyas Ketema</p>
+            <p>Built with HTML, CSS, and Vanilla JavaScript</p>
+            <div class="footer-links">
+                <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </a>
+                <a href="about.html">
+                    <i class="fas fa-question-circle"></i> How to Play
+                </a>
+                <a href="contact.html">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+        </div>
+    </footer>
+
+  <script src="shared.js"></script>
+</body>
+</html>
