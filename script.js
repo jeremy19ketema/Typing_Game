@@ -122,3 +122,60 @@ document.addEventListener('DOMContentLoaded', function() {
 
     updateWordDisplay();
 }
+
+function initGameWords() {
+    wordContainer.innerHTML = '';
+    const words = [...wordLists[currentDifficulty]];
+    
+    for (let i = words.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [words[i], words[j]] = [words[j], words[i]];
+    }
+    
+    const gameWords = words.slice(0, 10);
+    
+    gameWords.forEach((word, index) => {
+        const wordBox = document.createElement('div');
+        wordBox.className = 'word-box';
+        if (index === 0) wordBox.classList.add('current');
+        wordBox.textContent = word;
+        wordBox.dataset.word = word;
+        wordContainer.appendChild(wordBox);
+    });
+    
+    if (gameWords.length > 0) {
+        currentWordEl.textContent = gameWords[0];
+    }
+}
+
+function startGame() {
+    if (gameActive) return;
+    
+    gameActive = true;
+    gamePaused = false;
+    timeLeft = 60;
+    currentWordIndex = 0;
+    correctWords = 0;
+    totalTyped = 0;
+    
+    updateGameStats();
+    
+    wordInput.disabled = false;
+    wordInput.focus();
+    
+    startBtn.disabled = true;
+    startBtn.textContent = 'Game Running';
+    pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+    
+    timerInterval = setInterval(updateTimer, 1000);
+}
+function updateTimer() {
+    if (gamePaused) return;
+    
+    timeLeft--;
+    timerEl.textContent = timeLeft;
+    
+    if (timeLeft <= 0) {
+        endGame();
+    }
+}
