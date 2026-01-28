@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics | Typing Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ 
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="game.html" class="logo">
+                <i class="fas fa-keyboard"></i> TypingGame
+            </a>
+            <nav class="nav">
+                <button class="mobile-menu-btn" aria-label="Open menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="game.html" class="nav-link">Game</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="stat.html" class="nav-link active">Stats</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+          
+            <section class="page-header">
+                <h1>Game Statistics</h1>
+                <p class="subtitle">Track your typing progress and improvement over time</p>
+            </section>
+
+        
+            <section class="stats-summary" id="stats-summary">
+                <div class="stat-card">
+                    <i class="fas fa-history fa-2x"></i>
+                    <div class="stat-value" id="total-games">0</div>
+                    <div class="stat-label">Total Games Played</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-tachometer-alt fa-2x"></i>
+                    <div class="stat-value" id="avg-wpm">0</div>
+                    <div class="stat-label">Average WPM</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-bullseye fa-2x"></i>
+                    <div class="stat-value" id="avg-accuracy">0%</div>
+                    <div class="stat-label">Average Accuracy</div>
+                </div>
+                
+                <div class="stat-card">
+                    <i class="fas fa-crown fa-2x"></i>
+                    <div class="stat-value" id="best-wpm">0</div>
+                    <div class="stat-label">Best WPM</div>
+                </div>
+            </section>
