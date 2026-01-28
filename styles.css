@@ -540,3 +540,80 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
 }
+.difficulty-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.difficulty-card {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.difficulty-card h3 {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid;
+}
+
+.difficulty-easy {
+    color: var(--success-color);
+    border-color: var(--success-color) !important;
+}
+
+.difficulty-medium {
+    color: var(--primary-color);
+    border-color: var(--primary-color) !important;
+}
+
+.difficulty-hard {
+    color: var(--warning-color);
+    border-color: var(--warning-color) !important;
+}
+
+.difficulty-card ul {
+    list-style-position: inside;
+    padding-left: 0.5rem;
+}
+
+.difficulty-card li {
+    margin-bottom: 0.5rem;
+}
+
+.scoring-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.score-metric {
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.score-metric h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.score-tips {
+    grid-column: 1 / -1;
+    background-color: rgba(76, 201, 240, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--success-color);
+}
+
+.score-tips h3 {
+    color: var(--success-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
