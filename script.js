@@ -234,3 +234,57 @@ function handleIncorrectWord() {
     
     updateGameStats();
 }
+
+function updateWordDisplay() {
+    const wordBoxes = document.querySelectorAll('.word-box');
+    
+    wordBoxes.forEach(box => box.classList.remove('current'));
+    
+    if (wordBoxes[currentWordIndex]) {
+        wordBoxes[currentWordIndex].classList.add('current');
+        currentWordEl.textContent = wordBoxes[currentWordIndex].dataset.word;
+    }
+}
+
+function updateGameStats() {
+    const accuracy = totalTyped > 0 ? Math.round((correctWords / totalTyped) * 100) : 100;
+    accuracyEl.textContent = accuracy;
+    
+    const timeUsed = 60 - timeLeft;
+    const wpm = timeUsed > 0 ? Math.round((correctWords / timeUsed) * 60) : 0;
+    wpmEl.textContent = wpm;
+}
+
+function togglePause() {
+    if (!gameActive) return;
+    
+    gamePaused = !gamePaused;
+    
+    if (gamePaused) {
+        clearInterval(timerInterval);
+        pauseBtn.innerHTML = '<i class="fas fa-play"></i> Resume';
+        wordInput.disabled = true;
+    } else {
+        timerInterval = setInterval(updateTimer, 1000);
+        pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+        wordInput.disabled = false;
+        wordInput.focus();
+    }
+}
+
+function showHint() {
+    if (!gameActive || gamePaused) return;
+    
+    const currentWord = currentWordEl.textContent;
+    const hintLength = Math.ceil(currentWord.length / 2);
+    const hint = currentWord.substring(0, hintLength) + '_'.repeat(currentWord.length - hintLength);
+    
+    const originalValue = wordInput.value;
+    wordInput.value = hint;
+    
+    setTimeout(() => {
+        if (wordInput.value === hint) {
+            wordInput.value = originalValue;
+        }
+    }, 1000);
+}
