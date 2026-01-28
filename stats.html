@@ -37,8 +37,6 @@
                 <h1>Game Statistics</h1>
                 <p class="subtitle">Track your typing progress and improvement over time</p>
             </section>
-
-        
             <section class="stats-summary" id="stats-summary">
                 <div class="stat-card">
                     <i class="fas fa-history fa-2x"></i>
@@ -64,3 +62,93 @@
                     <div class="stat-label">Best WPM</div>
                 </div>
             </section>
+            <section class="results-section">
+                <h2><i class="fas fa-table"></i> Game History</h2>
+                
+                <div id="results-container">
+                    <div class="no-results" id="no-results">
+                        <i class="fas fa-clipboard-list"></i>
+                        <h3>No Game Results Yet</h3>
+                        <p>Play some games to see your statistics here!</p>
+                        <a href="game.html" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Play Game Now
+                        </a>
+                    </div>
+                    
+                    <table class="results-table" id="results-table" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Player</th>
+                                <th>WPM</th>
+                                <th>Accuracy</th>
+                                <th>Words</th>
+                                <th>Time</th>
+                                <th>Difficulty</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="controls">
+                    <button id="clear-stats" class="btn btn-warning">
+                        <i class="fas fa-trash-alt"></i> Clear All Stats
+                    </button>
+                    <button id="export-stats" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Export as JSON
+                    </button>
+                    <a href="game.html" class="btn btn-primary">
+                        <i class="fas fa-play"></i> Play Another Game
+                    </a>
+                </div>
+            </section>
+            <section class="chart-container">
+                <h2><i class="fas fa-chart-pie"></i> Difficulty Distribution</h2>
+                <div class="difficulty-distribution" id="difficulty-distribution">
+                   
+                    <p class="no-data">Play games on different difficulty levels to see distribution</p>
+                </div>
+            </section>
+            <section class="content-section">
+                <h2><i class="fas fa-chart-line"></i> Improvement Analysis</h2>
+                <div class="improvement-tips" id="improvement-tips">
+                    <div class="tip-card">
+                        <i class="fas fa-arrow-up"></i>
+                        <h3>WPM Trend</h3>
+                        <p id="wpm-trend">Play more games to see your WPM trend</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-crosshairs"></i>
+                        <h3>Accuracy Tip</h3>
+                        <p id="accuracy-tip">Focus on accuracy before speed for best results</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Next Challenge</h3>
+                        <p id="next-challenge">Try the Medium difficulty to challenge yourself</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Typing Game | Coded By Ermiyas Ketema</p>
+            <p>Built with HTML, CSS, and Vanilla JavaScript</p>
+            <div class="footer-links">
+                <a href="#" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </a>
+                <a href="about.html">
+                    <i class="fas fa-question-circle"></i> How to Play
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="shared.js"></script>
+</body>
+</html>
