@@ -2,13 +2,11 @@ Typing Game - Web Development Final Project
 
 A fully responsive typing speed test game built with vanilla HTML, CSS, and JavaScript.
 
-
 🎮 Live Demo
 
 Click The Below Link To Veiw The Project
 
 https://github.com/jeremy19ketema/Typing_Game.git
-
 
 📋 Features
 
@@ -25,7 +23,6 @@ Smooth page transitions
 Fully responsive design
 
 Contact form with validation
-
 
 🚀 How to Run
 
@@ -47,10 +44,9 @@ Font Awesome Icons
 
 Google Fonts
 
-
 📁 Project Structure
 
-home.html - Main game page
+game.html - Main game page
 
 about.html - Instructions and features
 
@@ -64,7 +60,6 @@ script.js - Main game logic
 
 shared.js - Common functionality
 
-
 🎯 How to Play
 
 Enter your name and select difficulty
@@ -77,7 +72,6 @@ Track your WPM and accuracy in real-time
 
 View your performance history on the Stats page
 
-
 📊 Scoring
 
 WPM: Words per minute (correct words only)
@@ -85,7 +79,6 @@ WPM: Words per minute (correct words only)
 Accuracy: Percentage of correctly typed words
 
 Results saved automatically in browser
-
 
 Developer: Ermiyas Ketema
 
